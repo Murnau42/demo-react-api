@@ -18,7 +18,7 @@ class DemoAxios extends React.Component {
       .get(`http://localhost:8080/`)
       .then((res) => {
         // Transform the raw data by extracting the nested posts
-        const citation = res.data;
+        const citation = res.data.citation;
 
         // Update state to trigger a re-render.
         // Clear any errors, and turn off the loading indiciator.

@@ -12,7 +12,7 @@ app.use(cors());
 
 // create a route for the app
 app.get("/", (req, res) => {
-  res.send("Les baobabs ne sont pas des arbustes.");
+  res.send({citation:"Les baobabs ne sont pas des arbustes."});
 });
 
 app.get("/json", (req, res) => {

@@ -13,27 +13,23 @@ class DemoFetch extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`http://localhost:8080/`)
-      .then((res) => {
-        // Transform the raw data by extracting the nested posts
-        const citation = res.data;
-
-        // Update state to trigger a re-render.
-        // Clear any errors, and turn off the loading indiciator.
-        this.setState({
-          citation,
-          loading: false,
-          error: null,
-        });
-      })
-      .catch((err) => {
-        // Something went wrong. Save the error in state and re-render.
-        this.setState({
-          loading: false,
-          error: err,
-        });
-      });
+    fetch("http://localhost:8080/")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            citation: result.citation,
+            loading: false,
+            error: null,
+          });
+        },
+        (error) => {
+          this.setState({
+            loading: false,
+            error: error,
+          });
+        }
+      );
   }
 
   renderLoading() {

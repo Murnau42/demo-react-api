@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   res.send({ citation: "Les baobabs ne sont pas des arbustes." });
 });
 
-// create a route for the app
+// Citation aléotoire
 app.get("/surprise", (req, res) => {
   var reponseJSON = {}
   connection.query(

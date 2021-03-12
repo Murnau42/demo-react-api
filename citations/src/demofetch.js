@@ -13,12 +13,12 @@ class DemoFetch extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/")
+    fetch("http://localhost:8080/surprise")
       .then((res) => res.json())
       .then(
         (result) => {
           this.setState({
-            citation: result.citation,
+            citation: result[0].citation,
             loading: false,
             error: null,
           });

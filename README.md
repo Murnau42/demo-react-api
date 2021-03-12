@@ -2,6 +2,7 @@
 
 ### Pour démarrer l'application React
 ```
+cd citations
 npm start 
 ```
 

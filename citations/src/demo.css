@@ -1,0 +1,12 @@
+ #carte {
+    width: 50%;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 20px; 
+    background-color:whitesmoke;
+  }
+
+  
+  

@@ -27,20 +27,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `citations` (
-  `id_citation` int(11) NOT NULL,
-  `citation` varchar(255) NOT NULL
+  `id_citation` int(11) NOT NULL AUTO_INCREMENT,
+  `citation` varchar(255) NOT NULL,
+  PRIMARY KEY (id_citation)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `citations`
 --
 
-INSERT INTO `citations` (`id_citation`, `citation`) VALUES
-(0, 'Les baobabs ne sont pas des arbustes.'),
-(1, 'You talking to me?'),
-(2, 'Yo, Adrian!'),
-(3, 'Here\'s Johnny!'),
-(4, 'Soylent Green is people!');
+INSERT INTO `citations` (`citation`) VALUES
+('Les baobabs ne sont pas des arbustes.'),
+('You talking to me?'),
+('Yo, Adrian!'),
+('I\'m going to make him an offer he can\'t refuse'),
+('Here\'s Johnny!'),
+('E.T. phone home'),
+('I feel the need - the need for speed!'),
+('Soylent Green is people!');
 
 --
 -- Indexes for dumped tables
@@ -49,9 +53,6 @@ INSERT INTO `citations` (`id_citation`, `citation`) VALUES
 --
 -- Indexes for table `citations`
 --
-ALTER TABLE `citations`
-  ADD PRIMARY KEY (`id_citation`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -55,7 +55,7 @@ class DemoFetch extends React.Component {
   render() {
     return (
       <div id="carte">
-        <h3>{this.props.titre}</h3>
+        <h4 id='titre'>{this.props.titre}</h4>
         {this.state.loading ? this.renderLoading() : this.renderUneCitation()}
       </div>
     );

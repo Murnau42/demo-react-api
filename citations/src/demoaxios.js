@@ -14,14 +14,19 @@ class DemoAxios extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`http://localhost:8080/`)
-      .then((res) => {
-        // Transform the raw data by extracting the nested posts
-        const citation = res.data.citation;
+    this.recupérerDernièreCitation();
+    this.timer = setInterval(() => this.recupérerDernièreCitation(), 3000);
+  }
 
-        // Update state to trigger a re-render.
-        // Clear any errors, and turn off the loading indiciator.
+  recupérerDernièreCitation() {
+    axios
+      .get(`http://localhost:8080/latest`)
+      .then((res) => {
+
+        //Axios se charge d'obtenir l'objet JSON
+        const citation = res.data[0].citation;
+
+
         this.setState({
           citation,
           loading: false,
@@ -52,15 +57,14 @@ class DemoAxios extends React.Component {
     return <p>{this.state.citation}</p>;
   }
 
-
   render() {
     return (
-      <div id='carte'>
-        <h1>{this.props.titre}</h1>
+      <div id="carte">
+        <h4 id="titre">{this.props.titre}</h4>
         {this.state.loading ? this.renderLoading() : this.renderUneCitation()}
       </div>
     );
   }
 }
 
-export default DemoAxios
+export default DemoAxios;

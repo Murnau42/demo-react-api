@@ -45,10 +45,16 @@ app.get("/surprise", (req, res) => {
 
 });
 
-app.get("/json", (req, res) => {
-  res.send({
-    citations: ["Les baobabs ne sont pas des arbustes", "Hello World"],
-  });
+app.get("/latest", (req, res) => {
+ var reponseJSON = {};
+ connection.query(
+   "SELECT citation FROM citations ORDER BY id_citation DESC LIMIT 1;",
+   (err, resultatQuery) => {
+     if (err) throw err;
+     reponseJSON = JSON.stringify(resultatQuery);
+     res.send(reponseJSON);
+   }
+ );
 });
 
 // make the server listen to requests

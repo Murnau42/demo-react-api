@@ -7,10 +7,9 @@ import DemoFetch from "./demofetch.js";
 //Component App 
 function App() {
   return (
-    <div>
-      <DemoAxios titre="Récupération de la citation avec axios" />
-      <DemoAxios titre="Récupération de la citation avec axios 2" />
-      <DemoFetch titre="Récupération de la citation avec fetch" />
+    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
+      <DemoAxios titre="Récupération de la plus récente citation avec axios" />
+      <DemoFetch titre="Récupération d'une citation aléatoire avec fetch" />
     </div>
   );
 }

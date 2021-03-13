@@ -3,10 +3,12 @@
     text-align: center;
     margin: 10px;
     padding: 20px;
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 20px; 
-    background-color:whitesmoke;
+    background-color:black;
+    color: white;
   }
 
-  
-  
+  #titre{
+    color:gold;
+  }

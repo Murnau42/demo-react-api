@@ -12,7 +12,12 @@ class DemoFetch extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    this.recupérerUneCitation();
+    this.timer = setInterval(() => this.recupérerUneCitation(), 3000);
+  }
+
+  recupérerUneCitation() {
     fetch("http://localhost:8080/surprise")
       .then((res) => res.json())
       .then(
@@ -50,7 +55,7 @@ class DemoFetch extends React.Component {
   render() {
     return (
       <div id="carte">
-        <h1>{this.props.titre}</h1>
+        <h3>{this.props.titre}</h3>
         {this.state.loading ? this.renderLoading() : this.renderUneCitation()}
       </div>
     );

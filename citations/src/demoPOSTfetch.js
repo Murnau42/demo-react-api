@@ -1,8 +1,7 @@
 import React from "react";
-import axios from "axios";
 import "./demo.css";
 
-class DemoPOSTAxios extends React.Component {
+class DemoPOSTFetch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,10 +14,14 @@ class DemoPOSTAxios extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const citation = this.state.citation;
-
-    axios
-      .post("http://localhost:8080/create", { citation })
+    let citation = { citation: this.state.citation };
+    fetch("http://localhost:8080/create", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(citation),
+    })
       .then((response) => this.setState({ message: response.statusText }))
       .catch((error) => {
         this.setState({ error: true, message: error.message });
@@ -55,4 +58,4 @@ class DemoPOSTAxios extends React.Component {
   }
 }
 
-export default DemoPOSTAxios;
+export default DemoPOSTFetch;

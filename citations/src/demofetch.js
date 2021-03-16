@@ -6,7 +6,7 @@ class DemoFetch extends React.Component {
     super(props);
 
     this.state = {
-      citation: "",
+      citation: null,
       loading: true,
       error: null,
     };
@@ -14,16 +14,17 @@ class DemoFetch extends React.Component {
 
   async componentDidMount() {
     this.recupérerUneCitation();
-    this.timer = setInterval(() => this.recupérerUneCitation(), 3000);
+    this.timer = setInterval(() => this.recupérerUneCitation(), 5000);
   }
 
   recupérerUneCitation() {
-    fetch("http://localhost:8080/surprise")
+    fetch("http://localhost:8080/random")
+      //Il faut traduire la réponse pour l'obtenir en format JSON
       .then((res) => res.json())
       .then(
-        (result) => {
+        (res) => {
           this.setState({
-            citation: result[0].citation,
+            citation: res[0].citation,
             loading: false,
             error: null,
           });
@@ -55,7 +56,7 @@ class DemoFetch extends React.Component {
   render() {
     return (
       <div id="carte">
-        <h4 id='titre'>{this.props.titre}</h4>
+        <h4 id="titre">{this.props.titre}</h4>
         {this.state.loading ? this.renderLoading() : this.renderUneCitation()}
       </div>
     );

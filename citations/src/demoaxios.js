@@ -7,7 +7,7 @@ class DemoAxios extends React.Component {
     super(props);
 
     this.state = {
-      citation: "",
+      citation: null,
       loading: true,
       error: null,
     };
@@ -15,31 +15,28 @@ class DemoAxios extends React.Component {
 
   componentDidMount() {
     this.recupérerDernièreCitation();
-    this.timer = setInterval(() => this.recupérerDernièreCitation(), 3000);
+    this.timer = setInterval(() => this.recupérerDernièreCitation(), 5000);
   }
 
   recupérerDernièreCitation() {
-    axios
-      .get(`http://localhost:8080/latest`)
-      .then((res) => {
-
+    axios.get(`http://localhost:8080/latest`).then(
+      (res) => {
         //Axios se charge d'obtenir l'objet JSON
         const citation = res.data[0].citation;
-
-
         this.setState({
           citation,
           loading: false,
           error: null,
         });
-      })
-      .catch((err) => {
+      },
+      (err) => {
         // Something went wrong. Save the error in state and re-render.
         this.setState({
           loading: false,
           error: err,
         });
-      });
+      }
+    );
   }
 
   renderLoading() {

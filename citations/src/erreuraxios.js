@@ -15,7 +15,6 @@ class ErreurAxios extends React.Component {
 
   componentDidMount() {
     this.recupérerDernièreCitation();
-    this.timer = setInterval(() => this.recupérerDernièreCitation(), 5000);
   }
 
   recupérerDernièreCitation() {

@@ -25,7 +25,7 @@ class DemoPOSTFetch extends React.Component {
       // Ajout de l'objet citation dans le corps de la requête 
       body: JSON.stringify(citation),
     })
-      .then((response) => this.setState({ message: response.statusText }))
+      .then((response) => this.setState({ message: response.status + " "+response.statusText }))
       .catch((error) => {
         this.setState({ error: true, message: error.message });
       });

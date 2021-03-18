@@ -19,7 +19,7 @@ class DemoPOSTAxios extends React.Component {
 
     axios
       .post("http://localhost:8080/create", { citation })
-      .then((response) => this.setState({ message: response.statusText }))
+      .then((response) => this.setState({ message: response.status + " "+response.statusText }))
       .catch((error) => {
         this.setState({ error: true, message: error.message });
         console.error("There was an error!");

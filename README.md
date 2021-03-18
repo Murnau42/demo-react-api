@@ -1,4 +1,4 @@
-# demo-react-api
+## demo-react-api dans le cadre du cours 420-G75 Nouvelles technologies et développement de logiciels
 
 ### Pour démarrer l'application React
 ```

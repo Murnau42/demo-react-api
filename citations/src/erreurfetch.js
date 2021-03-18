@@ -23,7 +23,7 @@ class ErreurFetch extends React.Component {
         if (res.ok) {
           return res.json();
         } else {
-          throw new Error(res.status);
+          throw new Error(res.status +" "+ res.statusText);
         }
       })
       .then((res) => {

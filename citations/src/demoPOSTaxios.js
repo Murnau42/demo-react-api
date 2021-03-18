@@ -15,7 +15,7 @@ class DemoPOSTAxios extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const citation = this.state.citation;
+    let citation = this.state.citation;
 
     axios
       .post("http://localhost:8080/create", { citation })

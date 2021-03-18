@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./demo.css";
 
-class DemoAxios extends React.Component {
+class ErreurAxios extends React.Component {
   constructor(props) {
     super(props);
 
@@ -19,17 +19,17 @@ class DemoAxios extends React.Component {
   }
 
   recupérerDernièreCitation() {
-    axios.get(`http://localhost:8080/latest`).then(
+    //Une requête provoquant une erreur http deviendra  une Rejected Promise
+    axios.get(`http://localhost:8080/inexistant`).then(
       (res) => {
-        //Axios se charge d'obtenir l'objet JSON en le "stringifiant"
+        let citation = res.data[0].citation;
         this.setState({
-          citation: res.data[0].citation,
+          citation,
           loading: false,
           error: null,
         });
       },
       (err) => {
-        // Something went wrong. Save the error in state and re-render.
         this.setState({
           loading: false,
           error: err,
@@ -63,4 +63,4 @@ class DemoAxios extends React.Component {
   }
 }
 
-export default DemoAxios;
+export default ErreurAxios;

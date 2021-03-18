@@ -16,16 +16,18 @@ class DemoPOSTFetch extends React.Component {
     event.preventDefault();
     let citation = { citation: this.state.citation };
     fetch("http://localhost:8080/create", {
-      method: "POST", 
+      // Précise le type de méthode
+      method: "POST",
+      //Headers de la requête
       headers: {
         "Content-Type": "application/json",
       },
+      // Ajout de l'objet citation dans le corps de la requête 
       body: JSON.stringify(citation),
     })
       .then((response) => this.setState({ message: response.statusText }))
       .catch((error) => {
         this.setState({ error: true, message: error.message });
-        console.error("There was an error!");
       });
   }
 

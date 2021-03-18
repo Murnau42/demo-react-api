@@ -1,8 +1,7 @@
 import React from "react";
-import axios from "axios";
 import "./demo.css";
 
-class DemoAxios extends React.Component {
+class ErreurFetch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -13,29 +12,33 @@ class DemoAxios extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.recupérerDernièreCitation();
-    this.timer = setInterval(() => this.recupérerDernièreCitation(), 5000);
+  async componentDidMount() {
+    this.recupérerUneCitation();
   }
 
-  recupérerDernièreCitation() {
-    axios.get(`http://localhost:8080/latest`).then(
-      (res) => {
-        //Axios se charge d'obtenir l'objet JSON en le "stringifiant"
+  recupérerUneCitation() {
+    // Les erreurs http telles que 404 doivent être gérées manuellement
+    fetch("http://localhost:8080/inexistant")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error(res.status);
+        }
+      })
+      .then((res) => {
         this.setState({
-          citation: res.data[0].citation,
+          citation: res[0].citation,
           loading: false,
           error: null,
         });
-      },
-      (err) => {
-        // Something went wrong. Save the error in state and re-render.
+      })
+      .catch((err) => {
         this.setState({
           loading: false,
           error: err,
         });
-      }
-    );
+      });
   }
 
   renderLoading() {
@@ -63,4 +66,4 @@ class DemoAxios extends React.Component {
   }
 }
 
-export default DemoAxios;
+export default ErreurFetch;
